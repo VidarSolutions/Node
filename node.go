@@ -15,26 +15,26 @@ type Node struct{
 
 
 type nodes struct {
-	allNodes map[NodeID]Node
+	allNodes map[uint64]Node
 }
 
 
 var Nodes = nodes{
-	allNodes: make(map[NodeID]Node),
+	allNodes: make(map[uint64]Node),
 }
 
 
 	
-func (nd *Nodes) GetNode(NodeID uint64) Node	{
+func (nd *nodes) GetNode(NodeID uint64) Node	{
 	return nd.allNodes[NodeID]
 
 }
 
 
-func (nd *Nodes) GetNodes() map[NodeID]Node {
+func (nd *nodes) GetNodes() map[uint64]Node {
 	return nd.allNodes
 }
 
-func (nd *Nodes) AddNode(newNode Node) {
+func (nd *nodes) AddNode(newNode Node) {
 	nd.allNodes[newNode.NodeID] = newNode
 }

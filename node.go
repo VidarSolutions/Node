@@ -4,7 +4,7 @@ import (
 
 )
 
-type Node struct{
+type VidarNode struct{
 	NodeID				uint64
 	PubKey				ed25519.PublicKey		
     RingId				uint64
@@ -15,26 +15,26 @@ type Node struct{
 
 
 type nodes struct {
-	allNodes map[uint64]Node
+	allNodes map[uint64]VidarNode
 }
 
 
 var Nodes = nodes{
-	allNodes: make(map[uint64]Node),
+	allNodes: make(map[uint64]VidarNode),
 }
 
 
 	
-func (nd *nodes) GetNode(NodeID uint64) Node	{
+func (nd *nodes) GetNode(NodeID uint64) VidarNode	{
 	return nd.allNodes[NodeID]
 
 }
 
 
-func (nd *nodes) GetNodes() map[uint64]Node {
+func (nd *nodes) GetNodes() map[uint64]VidarNode {
 	return nd.allNodes
 }
 
-func (nd *nodes) AddNode(newNode Node) {
+func (nd *nodes) AddNode(newNode VidarNode) {
 	nd.allNodes[newNode.NodeID] = newNode
 }
